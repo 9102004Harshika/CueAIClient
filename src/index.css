@@ -1,13 +1,134 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: "Roboto Condensed", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background:#222236;
+ color:white
+}
+::selection{
+  background-color:rgb(219,194,144);
+  color :black
+}
+/* BuyPrompt Component CSS */
+
+.prompt-container {
+  display: grid;
+  grid-template-columns: repeat(3, 350px);;
+  gap: 20px;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.prompt-card-link {
+  text-decoration: none;
+}
+
+.prompt-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 250px; /* Set a fixed height */
+  width: 350px; /* Set a fixed width */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures button is always at the bottom */
+}
+.prompts-card {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  height: 200px; /* Set a fixed height */
+  width: 300px; /* Set a fixed width */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Ensures button is always at the bottom */
+}
+
+.prompt-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.prompt-card-content {
+  padding: 15px;
+  overflow: hidden; /* Ensure text does not overflow */
+}
+
+.prompt-title {
+  font-size: 0.5em;
+  color: #333;
+  margin-bottom: 10px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.prompt-description {
+  color: #666;
+  margin-bottom: 15px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.prompt-price {
+  color: #e74c3c;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.prompt-username {
+  color: #555;
+}
+
+.prompt-buy-button {
+  background: linear-gradient(90deg, #dbca90, #d68586);
+  padding: 10px;
+  border: none;
+  border-radius: 0 0 10px 10px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+}
+.prompts-buy-button {
+  background: linear-gradient(90deg, #dbca90, #d68586);
+  padding: 2px;
+  border: none;
+  border-radius: 10px 10px 10px 10px;
+  width: 100%;
+  text-align: center;
+  cursor: pointer;
+  margin-left: 2px;
+}
+
+.prompt-buy-button:hover,
+.getPrompt:hover {
+  background: linear-gradient(90deg, #d68586, #dbca90);
+}
+.getPrompt{
+  background: linear-gradient(90deg, #dbca90, #d68586);
+}
+.loader-container {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height to center vertically */
+}
+
+.loader-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 80px; /* Same as the loader size */
+  height: 80px; /* Same as the loader size */
+  border-radius: 50%;
+  background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient colors */
+  -webkit-mask-image: radial-gradient(circle, white 60%, transparent 100%);
+  mask-image: radial-gradient(circle, white 60%, transparent 100%);
 }
