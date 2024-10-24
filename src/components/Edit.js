@@ -37,7 +37,7 @@ const Edit = () => {
   
   useEffect(() => {
     // Fetch the prompt data when the component mounts
-    axios.get(`http://localhost:5000/prompt/${promptId}`)
+    axios.get(`https://cueaiserver-1.onrender.com/prompt/${promptId}`)
       .then(response => {
         setPromptData(response.data);
         setType(response.data.type);
@@ -77,14 +77,14 @@ const Edit = () => {
       formData.append('promptFile', promptFile);
     }
 
-    axios.post(`http://localhost:5000/prompt/${promptId}/update`, formData, {
+    axios.post(`https://cueaiserver-1.onrender.com/prompt/${promptId}/update`, formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     })
       .then(response => {
         alert('Prompt edited successfully!!');
-        axios.post('http://localhost:5000/addActivity', {
+        axios.post('https://cueaiserver-1.onrender.com/addActivity', {
           username: response.data.username,
           activity: "Edited a prompt",
           date,
