@@ -35,7 +35,7 @@ const FAQ = () => {
 
     // Send issue to backend
     try {
-      const response = await axios.post("http://localhost:5000/submitIssue", issue); // Make sure the backend is set up to handle this
+      const response = await axios.post("https://cueaiserver-1.onrender.com/submitIssue", issue); // Make sure the backend is set up to handle this
       alert(`Thank you for submitting your issue! Your ticket ID is sent to your email. We will get back to you shortly.`)
 
     } catch (error) {
