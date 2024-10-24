@@ -11,7 +11,7 @@ const Signup = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:5000/signup', { fname, lname, email })
+    axios.post('9102004harshikas-projects/cue-ai-clientsignup', { fname, lname, email })
       .then(result => {
         alert("Created account successfully");
         const joinedDate = result.data.joinedDate;
