@@ -23,7 +23,7 @@ const PromptDetail = () => {
     const storedUsername = localStorage.getItem('username');
     setUsername(storedUsername);
 
-    axios.get(`http://localhost:5000/prompt/${id}`)
+    axios.get(`https://cueaiserver-1.onrender.com/prompt/${id}`)
       .then((result) => {
         const foundPrompt = result.data;
         setPrompt(foundPrompt);
@@ -51,11 +51,11 @@ const PromptDetail = () => {
   // Fetch user details and other prompts by the user
   useEffect(() => {
     if (prompt) {
-      axios.get(`http://localhost:5000/user/${prompt.username}`)
+      axios.get(`https://cueaiserver-1.onrender.com/user/${prompt.username}`)
         .then((result) => {
           setUserInfo(result.data);
 
-          axios.get(`http://localhost:5000/user/${prompt.username}/prompts`)
+          axios.get(`https://cueaiserver-1.onrender.com/user/${prompt.username}/prompts`)
             .then((response) => {
               const filteredPrompts = response.data.filter((p) => p.title !== prompt.title);
               setUserPrompts(filteredPrompts);
@@ -71,9 +71,9 @@ const PromptDetail = () => {
   const handleHeartClick = async () => {
     try {
       if (isLiked) {
-        await axios.delete(`http://localhost:5000/user/${username}/favorites/${id}`);
+        await axios.delete(`https://cueaiserver-1.onrender.com/user/${username}/favorites/${id}`);
       } else {
-        await axios.post(`http://localhost:5000/user/${username}/favorites`, { promptId: id });
+        await axios.post(`https://cueaiserver-1.onrender.com/user/${username}/favorites`, { promptId: id });
       }
       setIsLiked(!isLiked);
     } catch (err) {
@@ -84,7 +84,7 @@ const PromptDetail = () => {
   // Handle add to cart button click
   const handleCartClick = async () => {
     try {
-      await axios.post("http://localhost:5000/addToCart", {
+      await axios.post("https://cueaiserver-1.onrender.com/addToCart", {
         username: username,
         promptId: id
       });
