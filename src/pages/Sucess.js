@@ -8,7 +8,7 @@ const Success = () => {
   // Function to clear the cart
   const clearCart = async () => {
     try {
-      const response = await axios.delete('http://localhost:5000/clear-cart', {
+      const response = await axios.delete('https://cueaiserver-1.onrender.com/clear-cart', {
         data: { username }, // Send username in the request body using `data` property
       });
 
