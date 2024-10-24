@@ -5,7 +5,7 @@ import { MdOutlineAddShoppingCart } from "react-icons/md";
 import { FaRegHeart, FaHeart } from "react-icons/fa";
 import { IconContext } from "react-icons/lib";
 import axios from "axios";
-import logo from '../assets/logo.png';
+
 
 const PromptDetail = () => {
   const { id } = useParams();
@@ -15,9 +15,7 @@ const PromptDetail = () => {
   const [userInfo, setUserInfo] = useState(null);
   const [userPrompts, setUserPrompts] = useState([]);
   const [username, setUsername] = useState('');
-  const [reviews, setReviews] = useState([]);
-  const [newReview, setNewReview] = useState("");
-  const [rating, setRating] = useState(0);
+
   const navigate = useNavigate();
 
   // Fetch prompt details
@@ -98,26 +96,6 @@ const PromptDetail = () => {
   };
 
   // Handle review submission
-  const handleReviewSubmit = async (e) => {
-    e.preventDefault();
-    try {
-      const response = await axios.post(`http://localhost:5000/prompt/${id}/review`, {
-        username: username,
-        review: newReview,
-        rating: rating,
-      });
-
-      setReviews([...reviews, response.data]);
-      setNewReview("");
-      setRating(0);
-    } catch (err) {
-      console.error("Failed to submit review:", err);
-    }
-  };
-
-  if (!prompt) {
-    return <p>Loading...</p>;
-  }
 
   return (
     <>
