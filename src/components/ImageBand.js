@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from 'react';
+
 import image1 from '../assets/carousel1/1.png'
 import image2 from '../assets/carousel1/2.png'
 import image3 from '../assets/carousel1/3.png'
