@@ -10,7 +10,7 @@ const Cart = () => {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/getItems?username=${username}`)
+      .get(`https://cueaiserver-1.onrender.com/getItems?username=${username}`)
       .then((response) => {
         setCartItems(response.data);
       })
@@ -23,7 +23,7 @@ const Cart = () => {
 
   const handleRemoveItem = (itemId) => {
     setCartItems((prevItems) => prevItems.filter((item) => item._id !== itemId));
-    axios.post('http://localhost:5000/removeItem', {
+    axios.post('https://cueaiserver-1.onrender.com/removeItem', {
       itemId,
     });
   };
@@ -47,7 +47,7 @@ const Cart = () => {
     };
   
     // Save order details to the database
-    axios.post('http://localhost:5000/saveOrder', orderDetails)
+    axios.post('https://cueaiserver-1.onrender.com/saveOrder', orderDetails)
       .then(response => {
         // On successful save, navigate to checkout page
         navigate('/checkout', { state: { cartItems, totalPrice } });
