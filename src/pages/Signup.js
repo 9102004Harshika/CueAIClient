@@ -64,7 +64,7 @@ const Signup = () => {
                 <span>
                   &nbsp;I accept the{" "}
                   <a
-                    href="#"
+                    href="/terms"
                     className="bg-gradient-to-r from-[rgb(214,133,134)]  to-[rgb(219,194,144)] text-transparent  bg-clip-text font-semibold"
                     alt="Terms of Use"
                   >
@@ -72,7 +72,7 @@ const Signup = () => {
                   </a>{" "}
                   &{" "}
                   <a
-                    href="#"
+                    href="/privacy-policy"
                     className="bg-gradient-to-r from-[rgb(214,133,134)]  to-[rgb(219,194,144)] text-transparent  bg-clip-text font-semibold"
                     alt="Privacy Policy"
 
