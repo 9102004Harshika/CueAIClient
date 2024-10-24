@@ -11,7 +11,7 @@ const ForgotPassword = () => {
   const handleSendOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/sendOtp', { email });
+      const response = await axios.post('https://cueaiserver-1.onrender.com/sendOtp', { email });
       alert("Please check your email for Otp")
       setMessage(response.data.message);
       setOtpSent(true);
@@ -23,7 +23,7 @@ const ForgotPassword = () => {
   const handleVerifyOtp = async (e) => {
     e.preventDefault();
     try {
-      const response = await axios.post('http://localhost:5000/verifyOtp', { email, otp });
+      const response = await axios.post('https://cueaiserver-1.onrender.com/verifyOtp', { email, otp });
       setMessage(response.data.message);
       if (response.data.message === 'OTP verified successfully.') {
         localStorage.setItem('resetEmail', email);
