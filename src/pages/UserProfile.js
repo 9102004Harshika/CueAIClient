@@ -22,7 +22,7 @@ const UserProfile = () => {
   const [promptAuthors, setPromptAuthors] = useState({}); 
   useEffect(() => {
     // Fetch user data
-    axios.get(`http://localhost:5000/user/${username}`)
+    axios.get(`https://cueaiserver-1.onrender.com/user/${username}`)
       .then(response => {
         const { fname, lname, email, joinedDate, bio, twitter, instagram, website } = response.data; // Adjust as necessary
         setUserData({
@@ -50,7 +50,7 @@ const UserProfile = () => {
       });
 
     // Fetch user prompts
-    axios.get(`http://localhost:5000/user/${username}/prompts`)
+    axios.get(`https://cueaiserver-1.onrender.com/user/${username}/prompts`)
       .then(response => {
         setUserPrompts(response.data || []); // Adjusted to access data directly
       })
@@ -59,10 +59,10 @@ const UserProfile = () => {
       });
 
     // Fetch user orders
-    axios.get(`http://localhost:5000/${username}/getOrders`)
+    axios.get(`https://cueaiserver-1.onrender.com/${username}/getOrders`)
       .then(response => {
         setUserOrders(response.data || []);
-        axios.get(`http://localhost:5000/getPrompts`)
+        axios.get(`https://cueaiserver-1.onrender.com/getPrompts`)
       .then(response => {
         const prompts = response.data || [];
         // Create mapping of promptId to author username
@@ -94,7 +94,7 @@ const UserProfile = () => {
   };
 
   const handleSaveClick = () => {
-    axios.post(`http://localhost:5000/user/${username}/update`, editedData)
+    axios.post(`https://cueaiserver-1.onrender.com/user/${username}/update`, editedData)
       .then(() => {
         setUserData(editedData);
         setEditing(false);
