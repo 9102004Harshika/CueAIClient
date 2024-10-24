@@ -76,20 +76,20 @@ export const CreatePrompt = () => {
       formData.append('promptFile', promptData.promptFile);
     }
   
-    axios.post('http://localhost:5000/createPrompt', formData, {
+    axios.post('https://cueaiserver-1.onrender.com/createPrompt', formData, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     })
       .then(result => {
         alert("Created Prompt Successfully");
-      axios.post('http://localhost:5000/addActivity',{username:promptData.username,activity:"Created a prompt",date:Date.now()})
+      axios.post('https://cueaiserver-1.onrender.com/addActivity',{username:promptData.username,activity:"Created a prompt",date:Date.now()})
         // Send approval request after prompt creation
-        return axios.post('http://localhost:5000/admin/approvePrompt', { username: promptData.username });
+        return axios.post('https://cueaiserver-1.onrender.com/admin/approvePrompt', { username: promptData.username });
       })
       .then(result => {
         alert("Prompt sent for approval");
-        axios.post('http://localhost:5000/addActivity',{username:promptData.username,activity:"Prompt Sent for approval",date:Date.now()})
+        axios.post('https://cueaiserver-1.onrender.com/addActivity',{username:promptData.username,activity:"Prompt Sent for approval",date:Date.now()})
       })
       .catch(err => {
         console.error("Error creating prompt:", err.response ? err.response.data : err.message);
@@ -240,7 +240,7 @@ export const EditPrompt = () => {
   const {username}=useParams()
   const [userPrompts, setUserPrompts] = useState([]);
   useEffect(()=>{
-    axios.get(`http://localhost:5000/user/${username}/prompts`)
+    axios.get(`https://cueaiserver-1.onrender.com/user/${username}/prompts`)
       .then(response => {
         setUserPrompts(response.data);
       })
@@ -284,7 +284,7 @@ export const DeletePrompt = () => {
   const [deletedPrompts, setDeletedPrompts] = useState([]);
   const date = new Date().toISOString().slice(0, 10);
   useEffect(() => {
-    axios.get(`http://localhost:5000/user/${username}/prompts`)
+    axios.get(`https://cueaiserver-1.onrender.com/user/${username}/prompts`)
       .then(response => {
         setUserPrompts(response.data);
       })
@@ -292,7 +292,7 @@ export const DeletePrompt = () => {
         console.error('Error fetching user prompts:', error);
       });
   
-    axios.get(`http://localhost:5000/user/${username}/deleted-prompts`)
+    axios.get(`https://cueaiserver-1.onrender.com/user/${username}/deleted-prompts`)
       .then(response => {
         setDeletedPrompts(response.data);
       })
@@ -302,13 +302,13 @@ export const DeletePrompt = () => {
   }, [username]);
   
   const handleDeletePrompt = (promptId) => {
-    axios.delete(`http://localhost:5000/prompt/${promptId}/delete`)
+    axios.delete(`https://cueaiserver-1.onrender.com/prompt/${promptId}/delete`)
       .then(response => {
         const deletedPrompt = userPrompts.find(prompt => prompt._id === promptId);
         setUserPrompts(userPrompts.filter(prompt => prompt._id !== promptId));
         setDeletedPrompts([...deletedPrompts, deletedPrompt]);
         alert('Prompt moved to trash. Undo?');
-        axios.post('http://localhost:5000/addActivity',{username:username,activity:"Deleted a prompt",date:Date.now()})
+        axios.post('https://cueaiserver-1.onrender.com/addActivity',{username:username,activity:"Deleted a prompt",date:Date.now()})
       })
       .catch(error => {
         console.error('Error deleting prompt:', error);
@@ -316,12 +316,12 @@ export const DeletePrompt = () => {
   };
   
   const handleUndoDelete = (promptId) => {
-    axios.put(`http://localhost:5000/prompt/${promptId}/restore`)
+    axios.put(`https://cueaiserver-1.onrender.com/prompt/${promptId}/restore`)
       .then(response => {
         const restoredPrompt = deletedPrompts.find(prompt => prompt._id === promptId);
         setDeletedPrompts(deletedPrompts.filter(prompt => prompt._id !== promptId));
         setUserPrompts([...userPrompts, restoredPrompt]);
-        axios.post('http://localhost:5000/addActivity',{username:username,activity:"Restored a prompt"})
+        axios.post('https://cueaiserver-1.onrender.com/addActivity',{username:username,activity:"Restored a prompt"})
       })
       .catch(error => {
         console.error('Error restoring prompt:', error);
@@ -329,11 +329,11 @@ export const DeletePrompt = () => {
   };
   
   const handlePermanentDelete = (promptId) => {
-    axios.delete(`http://localhost:5000/prompt/${promptId}/permanently`)
+    axios.delete(`https://cueaiserver-1.onrender.com/prompt/${promptId}/permanently`)
       .then(response => {
         setDeletedPrompts(deletedPrompts.filter(prompt => prompt._id !== promptId));
         alert('Prompt permanently deleted');
-        axios.post('http://localhost:5000/addActivity',{username,activity:"Deleted a prompt"},date)
+        axios.post('https://cueaiserver-1.onrender.com/addActivity',{username,activity:"Deleted a prompt"},date)
       })
       .catch(error => {
         console.error('Error permanently deleting prompt:', error);
@@ -416,7 +416,7 @@ export const BuyPrompt = () => {
 
 
   useEffect(() => {
-    axios.get('http://localhost:5000/getPrompt')
+    axios.get('https://cueaiserver-1.onrender.com/getPrompt')
       .then(result => {
         const data = result.data.filter(prompt => prompt.username !== username); // Exclude prompts by the user
         setPrompts(data);
