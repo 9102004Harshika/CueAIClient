@@ -16,7 +16,7 @@ const NewPassword = () => {
     }
     try {
       const email = localStorage.getItem('resetEmail');
-      const response = await axios.post('http://localhost:5000/resetPassword', { email, newPassword });
+      const response = await axios.post('https://cueaiserver-1.onrender.com/resetPassword', { email, newPassword });
       setMessage(response.data.message);
       if (response.data.message === 'Password reset successfully.') {
         localStorage.removeItem('resetEmail');
