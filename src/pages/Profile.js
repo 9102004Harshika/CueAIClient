@@ -38,7 +38,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchPrompts = async () => {
       try {
-        const result = await axios.get('http://localhost:5000/getPrompt');
+        const result = await axios.get('https://cueaiserver-1.onrender.com/getPrompt');
         const data = result.data.filter(prompt => prompt.username === username).slice(0, 5);
         setPrompts(data);
       } catch (err) {
@@ -48,7 +48,7 @@ const Profile = () => {
 
     const fetchRecentActivity = async () => {
       try {
-        const result = await axios.get(`http://localhost:5000/recentActivity/${username}`);
+        const result = await axios.get(`https://cueaiserver-1.onrender.com/recentActivity/${username}`);
         setRecentActivity(result.data); // Assuming it returns an array of activities
       } catch (err) {
         console.error("Failed to fetch recent activity:", err);
