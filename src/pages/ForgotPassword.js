@@ -59,14 +59,14 @@ const ForgotPassword = () => {
               <span>
                 &nbsp;I accept the{" "}
                 <a
-                  href="#"
+                  href="/terms"
                   className="bg-gradient-to-r from-[rgb(214,133,134)]  to-[rgb(219,194,144)] text-transparent  bg-clip-text font-semibold"
                 >
                   Terms of Use
                 </a>{" "}
                 &{" "}
                 <a
-                  href="#"
+                  href="/privacy-policy"
                   className="bg-gradient-to-r from-[rgb(214,133,134)]  to-[rgb(219,194,144)] text-transparent  bg-clip-text font-semibold"
                 >
                   Privacy Policy
