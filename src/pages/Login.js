@@ -15,7 +15,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/send-otp-for-login', { email });
+      const response = await axios.post('https://cueaiserver-1.onrender.com/send-otp-for-login', { email });
       if (response.status === 200) {
         alert('OTP sent to your email');
         setOtpSent(true); // Show OTP input form
@@ -35,7 +35,7 @@ const Login = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const response = await axios.post('http://localhost:5000/verify-otp-and-login', { email, otp });
+      const response = await axios.post('https://cueaiserver-1.onrender.com/verify-otp-and-login', { email, otp });
       if (response.status === 200) {
         alert('Logged In Successfully!!!');
         const { user } = response.data;
