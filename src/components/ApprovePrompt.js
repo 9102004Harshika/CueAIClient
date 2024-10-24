@@ -6,7 +6,7 @@ const ApprovePrompt = () => {
   const [pendingPrompts, setPendingPrompts] = useState([]);
 
   useEffect(() => {
-    axios.get('http://localhost:5000/admin/pendingPrompts')
+    axios.get('https://cueaiserver-1.onrender.com/admin/pendingPrompts')
       .then(result => {
         setPendingPrompts(result.data);
       })
@@ -16,7 +16,7 @@ const ApprovePrompt = () => {
   }, []);
 
   const approvePrompt = (id) => {
-    axios.post(`http://localhost:5000/admin/approved/${id}`)
+    axios.post(`https://cueaiserver-1.onrender.com/admin/approved/${id}`)
       .then(result => {
         alert("Prompt approved");
         setPendingPrompts(pendingPrompts.filter(prompt => prompt._id !== id));
