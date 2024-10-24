@@ -26,7 +26,7 @@ const Checkout = () => {
   const handleFormSubmit = async (e) => {
     e.preventDefault();
 
-    const  response = await fetch('http://localhost:5000/create-checkout-session', {
+    const  response = await fetch('https://cueaiserver-1.onrender.com/create-checkout-session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ items: cartItems, totalPrice, personalInfo }),
