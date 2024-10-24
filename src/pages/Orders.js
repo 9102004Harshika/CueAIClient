@@ -13,7 +13,7 @@ const Orders = () => {
 
   useEffect(() => {
     // Fetch order details when the component mounts
-    axios.get(`http://localhost:5000/${username}/getOrders`)
+    axios.get(`https://cueaiserver-1.onrender.com/${username}/getOrders`)
       .then(response => {
         setOrders(response.data);
         setLoading(false);
@@ -31,7 +31,7 @@ const Orders = () => {
 
   const handleGetPromptFile = async (promptId) => {
     try {
-      const response = await axios.get(`http://localhost:5000/getPromptFile/${promptId}`, {
+      const response = await axios.get(`https://cueaiserver-1.onrender.com/getPromptFile/${promptId}`, {
         responseType: 'blob' // Important to handle file downloads
       });
       
